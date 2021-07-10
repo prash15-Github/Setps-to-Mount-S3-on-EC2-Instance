@@ -1,0 +1,38 @@
+Mount S3 on EC2 Instance
+# yum update all
+
+Install the dependencies.
+# sudo yum install automake fuse fuse-devel gcc-c++ git libcurl-devel libxml2-devel make openssl-devel
+
+Clone s3fs source code from git.
+# git clone https://github.com/s3fs-fuse/s3fs-fuse.git
+ 
+Change the Directory
+# cd s3fs
+		Install S3fs using ==> ./autogen.sh
+							   ./configure --prefix=/usr --with-openssl
+								make
+								make install
+
+Enter Access Key AND Secert AccessKEY
+   *create file --> touch /etc/passwd-s3fs
+					vi /etc/passwd-s3fs -- {enter access and secrt access key}
+
+change the permission of file
+# chmod 640 /etc/passwd-s3fs
+
+Make a Directory
+# mkdir /mys3bucket
+
+
+Mount Bucket
+# S3fs "Bucke NAME create in S3{s3-mounton-ec2}" /mys3bucket -o passwd_file=/etc/passwd-s3fs
+
+Mount Command
+#  df -h
+ 
+
+  					
+					
+		
+		
